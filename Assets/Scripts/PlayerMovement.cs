@@ -5,15 +5,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController characterController;
-    public SpriteAttributes attributes;
     private Camera mainCamera;
     public Animator animator;
     public float moveSpeed = 6.0f;
     public float jumpHeight = 6.0f;
     private float jumpHeightMultiplier = 1f;
-    public float JumpLimit = 2f;
-    #region HUD
-    public SliderHandler HUDHealth, HUDStamina;
+    public float jumpLimit = 2f;
+    #region Attributes
+    public Attribute HP, SP;
     #endregion
     void Start()
     {
@@ -26,9 +25,9 @@ public class PlayerMovement : MonoBehaviour
             jumpHeightMultiplier = 1f;
         }
         //Debug.Log(gameObject.name + "," + gameObject.transform.position.y);
-        if (Input.GetKeyDown("space") && gameObject.transform.position.y < JumpLimit)
+        if (Input.GetKeyDown("space") && gameObject.transform.position.y < jumpLimit)
         {
-            if (HUDStamina == null || HUDStamina.Consume(50))
+            if (SP == null || SP.Consume(50))// Sprite doesn't have SP attribute or Sprite has 50 SP
             {
                 jumpHeightMultiplier = 1.5f;
             }
