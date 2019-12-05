@@ -14,7 +14,7 @@ public class SliderHandler : MonoBehaviour
         currentAmount = maxAmount;
         SetSliderValue();
     }
-    void Update()
+    void FixedUpdate()
     {
         if (Slider == null) return;
         if (IsReplenishing) Recover(ReplenishingSpeed);
@@ -37,4 +37,5 @@ public class SliderHandler : MonoBehaviour
         SetSliderValue();
     }
     private void SetSliderValue() => Slider.value = (currentAmount / maxAmount) * 100f;
+    //public void SetValue(float value) => Slider.value = value;
 }
